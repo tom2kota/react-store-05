@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {Homepage} from "../../pages/home/Homepage";
 import {ShopPage} from "../../pages/shop/ShopPage";
 import Header from "../header/Header";
@@ -50,7 +50,7 @@ class App extends Component {
                         <Route exact path="/" component={Homepage}/>
                         <Route path="/shop" component={ShopPage}/>
                         <Route path="/contact" component={ContactPage}/>
-                        <Route exact path="/signin" render={() => <SignInUp/>}/>
+                        <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to='/'/>) : <SignInUp/>}/>
                         <Route exact path="/checkout" component={CheckoutPage}/>
                     </Switch>
                 </BrowserRouter>
