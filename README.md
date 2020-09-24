@@ -5,6 +5,14 @@ E-commerce project DEMO:
 
 ---------------
 
+## [Redux Persist](https://www.npmjs.com/package/redux-persist)
+
+``` 
+npm i redux-persist
+```
+
+---------------
+
 ## [Stripe](https://stripe.com)
 
 - Go to [Dashboard](https://dashboard.stripe.com/test/developers)

@@ -5,15 +5,17 @@ import App from './components/container/App';
 import * as serviceWorker from './serviceWorker';
 import {GlobalStyle} from "./globalStyles";
 import {Provider} from 'react-redux';
-import {store} from "./redux/store";
-
+import {store, reduxPersist} from "./redux/store";
+import {PersistGate} from "redux-persist/integration/react";
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
                 <GlobalStyle/>
-                <App/>
+                <PersistGate persistor={reduxPersist}>
+                    <App/>
+                </PersistGate>
             </BrowserRouter>
         </Provider>
     </React.StrictMode>
