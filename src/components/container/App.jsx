@@ -21,7 +21,6 @@ class App extends Component {
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
                 if (userAuth) {
                     const userRef = await createUserProfileDocument(userAuth)
-                    // userRef.onSnapshot(snapshot => console.log(snapshot.data()))
                     userRef.onSnapshot(snapshot => setCurrentUser({
                         currentUser: {
                             id: snapshot.id,
@@ -40,7 +39,7 @@ class App extends Component {
     }
 
     render() {
-        console.log('this.props: ', this.props)
+        console.log('this.props.currentUser: ', this.props.currentUser)
         return (
             <div>
                 <BrowserRouter>
@@ -49,7 +48,9 @@ class App extends Component {
                         <Route exact path="/" component={Homepage}/>
                         <Route path="/shop" component={ShopPage}/>
                         <Route path="/contact" component={ContactPage}/>
-                        <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to='/'/>) : <SignInUp/>}/>
+                        <Route exact path="/signin"
+                               render={() => this.props.currentUser.payload.user.currentUser ? (<Redirect to='/'/>) :
+                                   <SignInUp/>}/>
                         <Route exact path="/checkout" component={CheckoutPage}/>
                     </Switch>
                 </BrowserRouter>
