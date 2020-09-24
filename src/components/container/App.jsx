@@ -40,7 +40,6 @@ class App extends Component {
     }
 
     render() {
-        console.log('this.state: ', this.state)
         console.log('this.props: ', this.props)
         return (
             <div>
